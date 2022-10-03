@@ -21,6 +21,8 @@ def parse_args():
         default='coco',
         choices=['coco', 'voc', 'citys', 'random'],
         help='Color palette used for visualization')
+    parser.add_argument('--show', action='store_true',
+                        help='Show the detection results')
     parser.add_argument(
         '--score-thr', type=float, default=0.3, help='bbox score threshold')
     args = parser.parse_args()
@@ -50,7 +52,7 @@ def main(args):
         img,
         data_sample=result,
         draw_gt=False,
-        show=True,
+        show=args.show,
         wait_time=0,
         out_file=args.out_file,
         pred_score_thr=args.score_thr)
